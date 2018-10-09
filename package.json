@@ -1,0 +1,20 @@
+{
+  "name": "isw-dropdown-menu",
+  "description": "Material Design Polymer 3.0 Dropdown Menu (with multi-select).",
+  "main": "isw-dropdown-menu.js",
+  "dependencies": {
+    "@polymer/iron-dropdown": "^3.0.1",
+    "@polymer/iron-icon": "^3.0.1",
+    "@polymer/iron-icons": "^3.0.1",
+    "@polymer/paper-input": "^3.0.1",
+    "@polymer/paper-listbox": "^3.0.1",
+    "@polymer/paper-styles": "^3.0.1",
+    "@polymer/polymer": "^3.0.0"
+  },
+  "devDependencies": {
+    "@polymer/iron-demo-helpers": "^3.0.0-pre.19",
+    "@polymer/paper-item": "^3.0.1",
+    "@webcomponents/webcomponentsjs": "^2.0.0",
+    "wct-browser-legacy": "^1.0.0"
+  }
+}
