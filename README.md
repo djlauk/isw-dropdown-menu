@@ -1,6 +1,6 @@
 # \<isw-dropdown-menu\>
 
-Material Design Polymer 2.0 Dropdown Menu (with multi-select).
+Material Design Polymer 3.0 Dropdown Menu (with multi-select).
 
 Simple dropdown menu like paper-dropdown-menu, but drops "any kind of content" support in favour of multi-select.
 
