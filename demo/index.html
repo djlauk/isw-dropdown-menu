@@ -1,170 +1,39 @@
 <!doctype html>
 <html lang="en">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-	<title>isw-dropdown-menu demo</title>
+    <title>isw-dropdown-menu demo</title>
 
-	<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
 
-	<link rel="import" href="../../app-layout/app-layout.html">
-	<link rel="import" href="../../paper-item/paper-item.html">
-	<link rel="import" href="../../paper-item/paper-icon-item.html">
-	<link rel="import" href="../../paper-item/paper-item-body.html">
-	<link rel="import" href="../../paper-styles/paper-styles.html">
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles';
+      import '@polymer/iron-demo-helpers/demo-snippet';
+      import '@polymer/paper-item/paper-item.js';
+    </script>
 
-	<link rel="import" href="../../iron-icon/iron-icon.html">
-	<link rel="import" href="../../iron-icons/iron-icons.html">
+    <script type="module" src="../isw-dropdown-menu.js"></script>
 
-	<link rel="import" href="../isw-dropdown-menu.html">
-
-	<style>
-		body {
-			font-family: 'Roboto', 'Noto', sans-serif;
-			line-height: 1.5;
-			background-color: #FFFFFF;
-		}
-
-		#drawer {
-			background-color: #DDDDDD;
-			height: 100%;
-		}
-
-		app-toolbar {
-			color: #FFFFFF;
-			background: #00508C;
-		}
-	</style>
-</head>
-<body>
-	<dom-module id="demo-element-view">
-		<template>
-			<style>
-				:host {
-					display: block;
-					padding: 32px;
-				}
-
-				iron-icon.checkbox.checked { color: #00508C; }
-				iron-icon.checkbox.unchecked { color: var(--secondary-text-color); }
-
-				paper-icon-item iron-icon.checkbox.checked { display: none; }
-				paper-icon-item iron-icon.checkbox.unchecked { display: block; }
-				paper-icon-item.iron-selected iron-icon.checkbox.checked { display: block; }
-				paper-icon-item.iron-selected iron-icon.checkbox.unchecked { display: none; }
-			</style>
-
-			<h3>Basic:</h3>
-			<isw-dropdown-menu attr-for-selected="value" label="Dinosaurs">
-				<template is="dom-repeat" items="[[ items ]]">
-					<paper-item value$="[[ item.id ]]">[[ item.label ]]</paper-item>
-				</template>
-			</isw-dropdown-menu>
-
-			<br><br>
-
-			<h3>Multi select:</h3>
-			<isw-dropdown-menu multi attr-for-selected="value" label="Dinosaurs">
-				<template is="dom-repeat" items="[[ items ]]">
-					<paper-item value$="[[ item.id ]]">[[ item.label ]]</paper-item>
-				</template>
-			</isw-dropdown-menu>
-
-			<br><br>
-
-			<h3>Fancy:</h3>
-			<isw-dropdown-menu multi attr-for-selected="value" label="Dinosaurs">
-				<template is="dom-repeat" items="[[ items ]]">
-					<paper-icon-item value$="[[ item.id ]]" label$="[[ item.label ]]">
-						<iron-icon class="checkbox unchecked" icon="check-box-outline-blank" slot="item-icon"></iron-icon>
-						<iron-icon class="checkbox checked" icon="check-box" slot="item-icon"></iron-icon>
-						<paper-item-body two-line>
-							<div>[[ item.label ]]</div>
-							<div secondary>[[ item.description ]]</div>
-						</paper-item-body>
-					</paper-icon-item>
-				</template>
-			</isw-dropdown-menu>
-
-			<br><br>
-
-			<h3>Preselected:</h3>
-			<isw-dropdown-menu multi attr-for-selected="value" label="Dinosaurs" selected-values="{{ preselected }}">
-				<template is="dom-repeat" items="[[ items ]]">
-					<paper-icon-item value$="[[ item.id ]]" label$="[[ item.label ]]">
-						<iron-icon class="checkbox unchecked" icon="check-box-outline-blank" slot="item-icon"></iron-icon>
-						<iron-icon class="checkbox checked" icon="check-box" slot="item-icon"></iron-icon>
-						<paper-item-body two-line>
-							<div>[[ item.label ]]</div>
-							<div secondary>[[ item.description ]]</div>
-						</paper-item-body>
-					</paper-icon-item>
-				</template>
-			</isw-dropdown-menu>
-
-			<br><br>
-
-			<h3>Readonly:</h3>
-			<isw-dropdown-menu multi readonly attr-for-selected="value" label="Dinosaurs" selected-values="{{ readonlyselected }}">
-				<template is="dom-repeat" items="[[ items ]]">
-					<paper-icon-item value$="[[ item.id ]]" label$="[[ item.label ]]">
-						<iron-icon class="checkbox unchecked" icon="check-box-outline-blank" slot="item-icon"></iron-icon>
-						<iron-icon class="checkbox checked" icon="check-box" slot="item-icon"></iron-icon>
-						<paper-item-body two-line>
-							<div>[[ item.label ]]</div>
-							<div secondary>[[ item.description ]]</div>
-						</paper-item-body>
-					</paper-icon-item>
-				</template>
-			</isw-dropdown-menu>
-		</template>
-
-		<script>
-			HTMLImports.whenReady( function() {
-				Polymer( {
-					is: 'demo-element-view',
-					ready: function() {
-						this.items = [
-							{
-								id: 1,
-								label: 'Allosaurus',
-								description: 'Allosaurus was a large bipedal predator.'
-							},
-							{
-								id: 2,
-								label: 'Brontosaurus',
-								description: 'Brontosaurus was a large, long-necked quadrupedal animal.'
-							},
-							{
-								id: 3,
-								label: 'Carcharodontosaurus',
-								description: 'Carcharodontosaurus were carnivores, with enormous jaws.'
-							},
-							{
-								id: 4,
-								label: 'Diplodocus',
-								description: 'Diplodocus is among the most easily identifiable dinosaurs.'
-							}
-						];
-						this.preselected = [ '1', '3' ];
-						this.readonlyselected = [ '2' ];
-					}
-				} );
-			} );
-		</script>
-	</dom-module>
-
-	<app-drawer-layout fullbleed>
-		<app-drawer slot="drawer">
-			<div id="drawer"></div>
-		</app-drawer>
-		<app-header-layout fixed condenses>
-			<app-header slot="header">
-				<app-toolbar>isw-dropdown-menu demo</app-toolbar>
-			</app-header>
-			<demo-element-view></demo-element-view>
-		</app-header-layout>
-	</app-drawer-layout>
-</body>
+    <custom-style>
+      <style is="custom-style" include="demo-pages-shared-styles">
+      </style>
+    </custom-style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic isw-dropdown-menu demo</h3>
+      <demo-snippet>
+        <template>
+            <isw-dropdown-menu multi label="Dinosaurs">
+              <paper-item>Allosaurus</paper-item>
+              <paper-item>Brontosaurus</paper-item>
+              <paper-item>Carcharodontosaurus</paper-item>
+              <paper-item>Diplodocus</paper-item>
+            </isw-dropdown-menu>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
 </html>
