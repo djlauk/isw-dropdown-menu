@@ -1,5 +1,6 @@
 {
   "name": "isw-dropdown-menu",
+  "version": "2.0.0",
   "description": "Material Design Polymer 3.0 Dropdown Menu (with multi-select).",
   "main": "isw-dropdown-menu.js",
   "dependencies": {
@@ -16,5 +17,6 @@
     "@polymer/paper-item": "^3.0.1",
     "@webcomponents/webcomponentsjs": "^2.0.0",
     "wct-browser-legacy": "^1.0.0"
-  }
+  },
+  "license": "MIT"
 }
